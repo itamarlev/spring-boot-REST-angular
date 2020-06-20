@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card-body">
+    <form class="form-inline" >
+      <label for="gameNumber" >Choose a game number:</label><div class="divider"></div>
+      <input id="gameNumber" #game="ngModel" [min]="0" class="form-control" id="gameNumber" maxlength="1000" name="gameNumber" ngModel type="number"><div class="divider"></div>
+      <button (click)="fetchStatistics(game)" class="btn btn-primary">Fetch Statistics</button>
+    </form>
+    <table class="table table-bordered table-striped container" *ngIf="userScoreObservable$ | async as usersScores">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let userScore of usersScores;index as i">
+        <td>{{ i+1 }}</td>
+        <td>{{ userScore.userName }}</td>
+        <td>{{ userScore.score }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #formGroup="ngForm">
+        <div class="form-group">
+          <label for="gameNumber">Game number:</label>
+          <input class="form-control" id="gameNumber" name="gameNumber" type="number" ngModel required maxlength="1000" [min]="0" #game="ngModel">
+          <span class="help-block" *ngIf="game.invalid && game.touched">Please enter a valid number</span>
+        </div>
+        <div class="form-group">
+          <label for="userName">User Name:</label>
+          <input class="form-control" id="userName" name="userName" type="text" ngModel required maxlength="30" #user="ngModel">
+          <span class="help-block" *ngIf="user.invalid && user.touched">Please enter a valid name</span>
+        </div>
+        <div class="form-group">
+          <label for="questionId">Question ID: </label>
+          <input class="form-control" id="questionId" name="questionId" type="number" ngModel required maxlength="1000" min="0" #question="ngModel">
+          <span class="help-block" *ngIf="question.invalid && question.touched">Please enter a valid number</span>
+        </div>
+        <div class="form-group">
+          <label for="answerId">Answer ID:</label>
+          <input class="form-control" id="answerId" name="answerId" type="number" ngModel required maxlength="1000" min="0" #answer="ngModel">
+          <span class="help-block" *ngIf="answer.invalid && answer.touched">Please enter a valid number</span>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid">Submit</button>
+        <div class="divider"></div>
+        <button class="btn btn-primary" type="button" (click)="onReset()" >Reset Form</button>
+      </form>
+
+      <div class="row" *ngIf="answerResultObservable$ | async as answerResult ">
+        <div class="col-xs-12">
+          <h3>your answer was {{answerResult.status}}</h3>
+          <h3 *ngIf="answerResult.errorMessage"> {{answerResult.errorMessage}}</h3>
+          <h3 *ngIf="!answerResult.errorMessage">you have accumulated {{answerResult.pointsEarned}} point</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
