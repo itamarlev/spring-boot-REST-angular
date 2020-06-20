@@ -1,13 +1,12 @@
 package com.itamar.gamemanager.model;
 
-import java.util.Comparator;
-
 public class UserScore implements Comparable<UserScore>
 {
 	private String userName;
 	private int score;
 
-	public UserScore(){
+	public UserScore()
+	{
 	}
 
 	public UserScore(String userName, int score)

@@ -30,15 +30,12 @@ public class GameManagerController
 	@PostMapping("/answer")
 	public AnswerResult answerQuestion(@RequestBody PlayerAnswerMove playerAnswerMove)
 	{
-		AnswerResult answerResult = gameManager.processPlayerMove(playerAnswerMove);
-		return answerResult;
+		return gameManager.processPlayerMove(playerAnswerMove);
 	}
 
 	@GetMapping("/leader-board")
 	public List<UserScore> retrieveLeaderBoard(@RequestParam(name = "game", required = true, defaultValue = "0") long gameId)
 	{
-		List<UserScore> gameLeaderBoard = gameManager.getGameLeaderBoard(gameId);
-		return gameLeaderBoard;
+		return gameManager.getGameLeaderBoard(gameId);
 	}
-
 }

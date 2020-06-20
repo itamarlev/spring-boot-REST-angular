@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup, NgModel} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgModel} from '@angular/forms';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AnswerResult} from '../../model/answer-result';
 import {ServerEndpoint} from '../../lib/server-endpoint.enum';
 import {UserScore} from '../../model/user-score';
 
@@ -14,7 +13,8 @@ import {UserScore} from '../../model/user-score';
 export class LeaderBoardComponent implements OnInit {
   public userScoreObservable$: Observable<UserScore[]>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
   }
